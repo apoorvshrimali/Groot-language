@@ -1,10 +1,10 @@
 var btnTranslate = document.querySelector("#btn-translate");
-var txtInput = document.querySelector("#txt-input");
-var outputDiv = document.querySelector("#output");
+var txtInput = document.querySelector("#textIP");
+var outputDiv = document.querySelector("#textOP");
 
 // var serverURL = "https://lessonfourapi.tanaypratap.repl.co/transalte/yoda.json"
 
-varserverURL = "https://api.funtranslations.com/translate/groot.json"
+var serverURL = "https://api.funtranslations.com/translate/groot.json"
 
 function getTraslationURL(input){
     return serverURL + "?" + "text=" + input
@@ -17,6 +17,7 @@ function errorHandler(error){
     function clickHandler(){
         var inputText = txtInput.value;
          fetch(getTraslationURL(inputText))
+         .then(res =>res.json())
          .then(json=>{
              var translateText = json.contents.translated;
              outputDiv.innerText = translateText;
